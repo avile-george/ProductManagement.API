@@ -66,6 +66,8 @@ using (var scope = app.Services.CreateScope())
     productRepo.CreateAsync(new Product { Name = "Smartphone", Description = "Android phone", Sku="AXD156", Quantity = 100, Price = 599.99m,  CategoryId = electronics.Id }).GetAwaiter().GetResult();
     productRepo.CreateAsync(new Product { Name = "Laptop", Description = "Lightweight laptop", Sku = "12389", Quantity = 230, Price = 1299.99m, CategoryId = electronics.Id }).GetAwaiter().GetResult();
     productRepo.CreateAsync(new Product { Name = "Bread", Description = "Whole grain", Sku = "SKU888", Quantity = 48, Price = 2.49m, CategoryId = groceries.Id }).GetAwaiter().GetResult();
+    productRepo.CreateAsync(new Product { Name = "Milk", Description = "Dairy", Sku = "TYU3455", Quantity = 12, Price = 2.49m, CategoryId = groceries.Id }).GetAwaiter().GetResult();
+    productRepo.CreateAsync(new Product { Name = "Lotion", Description = "Skin Moisturizer", Sku = "675765", Quantity = 212, Price = 9.99m, CategoryId = skinCare.Id }).GetAwaiter().GetResult();
 }
 
 // Configure the HTTP request pipeline.

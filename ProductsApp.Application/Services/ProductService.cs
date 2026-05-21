@@ -50,11 +50,12 @@ namespace ProductsApp.Application.Services
             return _mapper.Map<ProductDto>(model);
         }
 
-        public async Task<IEnumerable<ProductDto>> GetBySearchTermAsync(string searchText, int categoryId)
+        public async Task<IEnumerable<ProductDto>> GetBySearchTermAsync(string searchText, int? categoryId)
         {
-            var matches = await _products.SearchAsync(p => p.CategoryId == categoryId);
+            var matches = (categoryId > 0) ?
+                await _products.SearchAsync(p => p.CategoryId == categoryId) :
+                await _products.GetAllAsync();
 
-            // in a real application, we might want to put length validation. eg: search text length > 3
             if (matches?.Any() == true && !string.IsNullOrWhiteSpace(searchText))
                 matches = _searchEngine.GetByFuzzyMatch(matches, searchText);
 

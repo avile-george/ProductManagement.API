@@ -14,10 +14,9 @@ namespace ProductsApp.API.Controllers
         private const int cacheDuration = 300; // 5min in secs - in a real world app, this would be configurable
 
         /// <summary>
-        /// Get all categories. This endpoint is cached for 5 minutes to improve performance, as category data is not expected to change frequently.
+        /// Get all categories. 
         /// </summary>
         [HttpGet]
-        [ResponseCache(Duration = cacheDuration, Location = ResponseCacheLocation.Any)]
         public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAll()
         {
             try
@@ -31,6 +30,10 @@ namespace ProductsApp.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets the category hierarchy as a tree structure. Each category will include its subcategories recursively.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("tree")]
         [ResponseCache(Duration = cacheDuration, Location = ResponseCacheLocation.Any)]
         public async Task<ActionResult<IEnumerable<CategoryDto>>> GetHierarchy()

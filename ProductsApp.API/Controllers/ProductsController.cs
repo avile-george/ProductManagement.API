@@ -37,7 +37,7 @@ namespace ProductsApp.API.Controllers
                 // Get all products
                 var allProducts = (string.IsNullOrEmpty(searchText) && categoryId == null)
                     ? await _productService.GetAllAsync()
-                    : await _productService.GetBySearchTermAsync(searchText, categoryId.Value);
+                    : await _productService.GetBySearchTermAsync(searchText, categoryId);
 
                 var productList = allProducts.ToList();
                 var totalRecords = productList.Count;

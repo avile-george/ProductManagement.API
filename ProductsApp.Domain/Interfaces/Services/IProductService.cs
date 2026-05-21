@@ -15,6 +15,6 @@ namespace ProductsApp.Domain.Interfaces.Services
         Task<ProductDto?> GetByIdAsync(int id);
         Task<bool> UpdateAsync(ProductUpdateDto dto);
 
-        Task<IEnumerable<ProductDto>> GetBySearchTermAsync(string searchText, int categoryId);
+        Task<IEnumerable<ProductDto>> GetBySearchTermAsync(string searchText, int? categoryId);
     }
 }
